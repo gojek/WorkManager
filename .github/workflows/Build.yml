@@ -11,10 +11,10 @@ on:
 
 jobs:
     build:
-    name: Build
-    runs-on: macos-12
-    steps:
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
+      name: Build
+      runs-on: macos-12
+      steps:
+        - name: Build
+          run: swift build
+        - name: Run tests
+          run: swift test
