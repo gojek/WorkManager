@@ -4,7 +4,6 @@ import XCTest
 final class WorkManagerTests: XCTestCase {
     let sut = WorkManager.shared
     
-    
     func testQueuing() throws {
         let performExpectation = XCTestExpectation(description: "performExpectation")
         var didPerformed = false
@@ -17,7 +16,6 @@ final class WorkManagerTests: XCTestCase {
     }
     
     func testCancellation() throws {
-        
         let performExpectation = XCTestExpectation(description: "performExpectation")
         var didPerformed = false
         sut.enqueueUniquePeriodicWork(id: "com.example.task.two", interval: 20) {

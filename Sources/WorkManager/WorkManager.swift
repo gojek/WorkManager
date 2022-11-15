@@ -10,14 +10,24 @@
 
 import Foundation
 
+/// Class responsible for scheduling periodic works
 public final class WorkManager {
     
     private init() {}
+    
+    /// Shared singleton object for WorkManager
     public static let shared: WorkManager = .init()
     
     private var taskMap: [String: Atomic<Task>] = [:]
     private let workManagerQueue = DispatchQueue(label: "workmanager.taskmap.concurrent", attributes: .concurrent)
     
+    /// Enqueues periodic work, if task with same id exist the tasks are overridden
+    /// - Parameters:
+    ///   - id: Unique id associated with work
+    ///   - interval: interval in seconds
+    ///   - work: Work block to perform periodically
+    ///   - doesNotPerformOnLowPower: defines if the work should run or low power mode
+    ///   - queue: Queue to run the task in, the default is background
     public func enqueueUniquePeriodicWork(id: String, interval: TimeInterval, work: @escaping () -> Void, doesNotPerformOnLowPower: Bool = true, onQueue queue: DispatchQueue = DispatchQueue.global(qos: .background)) {
         var task: Atomic<Task>?
         workManagerQueue.sync {
@@ -39,6 +49,8 @@ public final class WorkManager {
         }
     }
     
+    /// Cancels scheduled task related to the unique id
+    /// - Parameter id: Unique id of the task to be cancelled
     public func cancelQueuedPeriodicWork(withId id: String) {
         workManagerQueue.sync {
             taskMap[id]?.value.cancel()
@@ -52,6 +64,7 @@ public final class WorkManager {
 // MARK: - Task Implementation
 extension WorkManager {
     
+    /// Represents and periodic task, responsible for keeping track of execution timstamps
     public class Task {
         var op: () -> Void
         var doesNotPerformOnLowPower: Bool
@@ -82,6 +95,7 @@ extension WorkManager {
             
         }
         
+        /// Perform/Execute the operration associated with the task object
         public func perform() {
             if doesNotPerformOnLowPower && ProcessInfo.processInfo.isLowPowerModeEnabled {
                 return
@@ -121,11 +135,13 @@ extension WorkManager {
             }
         }
         
+        /// Cancel the ongoing task object
         public func cancel() {
             lastRunTime = nil
             currentWorkItem?.cancel()
         }
         
+        /// Schedules the periodic task to run in provided intervals
         @objc public func schedule() {
             guard let lastRunTime = lastRunTime else {
                 scheduleTimer()

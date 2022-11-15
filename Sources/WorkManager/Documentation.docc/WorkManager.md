@@ -9,10 +9,31 @@ again.
 
 ## Usage
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+### Enqueuing task
+
+WorkManager needs you to register a closure with a unique task id, preferably during the app launch sequence, suggested place would be before returning from `application(_:, didFinishLaunchingWithOptions:) -> Bool`.
+
+```swift
+import WorkManager
+
+// Scheduling to perform in every 2 days
+WorkManager.shared.enqueueUniquePeriodicWork(id: "com.unique.task.id", interval: 2 * 24 * 60 * 60) {
+    cleanUpDisk()
+}
+```
+
+### Cancelling Task
+
+In case you want to cancel a scheduled task on the fly you could pass the unique id of the task to WorkManager and call cancel
+
+```swift
+WorkManager.shared.cancelQueuedPeriodicWork(withId: "com.unique.task.id")
+```
+
+WorkManager As of now only performs the tasks in the foreground, it will evaluate every launch time if the time interval has passed against the last run time, which is a response to which it will perform your registered closure.
 
 ## Topics
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
+### Types
 
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+- ``WorkManager/WorkManager/Task``
