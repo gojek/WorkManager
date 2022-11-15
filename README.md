@@ -1,5 +1,7 @@
 # WorkManager
 
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) [![Build](https://github.com/gojekfarm/WorkManager/actions/workflows/Build.yml/badge.svg)](https://github.com/gojekfarm/WorkManager/actions/workflows/Build.yml) [![CocoaPods Version](https://img.shields.io/cocoapods/v/WorkManager.svg?style=flat)](http://cocoadocs.org/docsets/WorkManager)
+
 WorkManager is a task scheduler, it allows apps to schedule periodic tasks to perform in certain intervals of duration, while persisting the tasks throughout app launches, and termination cycles.
 
 WorkManager uses UserDeafult to store the last run time and the interval every time the app comes to the foreground your app passes control to WorkManager to let it evaluate and run if the task needed to be run again.
