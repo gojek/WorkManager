@@ -22,7 +22,7 @@ Once you have your Swift package set up, adding WorkManager as a dependency is a
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/gojek/WorkManager.git", .upToNextMajor(from: "0.0.9"))
+    .package(url: "https://github.com/gojek/WorkManager.git", .upToNextMajor(from: "0.10.0"))
 ]
 ```
 
@@ -61,7 +61,7 @@ WorkManager As of now only performs the tasks in the foreground, it will evaluat
 
 ## Contributing
 
-As the creators, and maintainers of this project, we're glad to invite contributors to help us stay up to date. Please take a moment to review [the contributing document](https://github.com/gojek/WorkManager/blob/main/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
+As the creators, and maintainers of this project, we're glad to invite contributors to help us stay up to date. Please take a moment to review [the contributing document](https://github.com/gojek/WorkManager/blob/main/.github/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
 
 - If you **found a bug**, open an [issue](https://github.com/gojek/WorkManager/issues).
 - If you **have a feature request**, open an [issue](https://github.com/gojek/WorkManager/issues).
