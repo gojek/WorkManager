@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   
   s.author           = "Gojek"
-  s.source           = { :git => '' }
+  s.source           = { :git => 'https://github.com/gojek/WorkManager.git', :tag => '#{s.version}' }
 
   s.platform         = :ios
   s.ios.deployment_target = '11.0'
