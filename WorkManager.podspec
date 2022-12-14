@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "WorkManager"
-  s.version          = "0.9.0"
+  s.version          = "0.10.0"
   s.summary          = "WorkManager is a periodic task scheduler "
   s.description      = "WorkMaanger shedules periodic task that get executed regardless of the app sessions"
 
