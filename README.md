@@ -59,6 +59,10 @@ WorkManager.shared.cancelQueuedPeriodicWork(withId: "com.unique.task.id")
 
 WorkManager As of now only performs the tasks in the foreground, it will evaluate every launch time if the time interval has passed against the last run time, which is a response to which it will perform your registered closure.
 
+## Documentation
+
+[Refer here for the documentation](https://gojek.github.io/WorkManager/documentation/workmanager/)
+
 ## Contributing
 
 As the creators, and maintainers of this project, we're glad to invite contributors to help us stay up to date. Please take a moment to review [the contributing document](https://github.com/gojek/WorkManager/blob/main/.github/CONTRIBUTING.md) in order to make the contribution process easy and effective for everyone involved.
